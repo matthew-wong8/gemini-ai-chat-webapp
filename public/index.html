@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>Gemini AI Chat</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="export-btn" id="exportBtn" title="Export conversation">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="clear-btn" id="clearBtn" title="Clear conversation">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <div class="status" id="status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Ready</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <h2>Welcome to Gemini AI!</h2>
+                        <p>Ask me anything - I'm here to help with your questions, creative tasks, coding, and more.</p>
+                        <div class="example-prompts">
+                            <button class="example-btn" onclick="sendExample('Write a short story about a robot learning to paint')">
+                                <i class="fas fa-palette"></i>
+                                Creative Writing
+                            </button>
+                            <button class="example-btn" onclick="sendExample('Explain quantum computing in simple terms')">
+                                <i class="fas fa-atom"></i>
+                                Explain Concepts
+                            </button>
+                            <button class="example-btn" onclick="sendExample('Write a Python function to calculate fibonacci numbers')">
+                                <i class="fas fa-code"></i>
+                                Code Help
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <div class="input-actions">
+                            <button class="upload-btn" id="uploadBtn" title="Upload image">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Type your message here... (Press Enter to send, Shift+Enter for new line)"
+                            rows="1"
+                            maxlength="4000"
+                        ></textarea>
+                        <button id="sendButton" class="send-button" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <div class="input-info">
+                            <span class="char-count" id="charCount">0/4000</span>
+                            <span class="shortcuts">
+                                <kbd>Enter</kbd> to send • <kbd>Shift+Enter</kbd> for new line
+                            </span>
+                        </div>
+                        <div class="upload-preview" id="uploadPreview" style="display: none;">
+                            <img id="previewImage" alt="Preview">
+                            <button class="remove-image" onclick="removeImage()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Gemini is thinking...</p>
+                <div class="streaming-indicator" id="streamingIndicator" style="display: none;">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

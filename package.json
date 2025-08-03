@@ -1,0 +1,26 @@
+{
+  "name": "gemini-webapp",
+  "version": "2.0.0",
+  "description": "A modern webapp that integrates Google Gemini AI with advanced features",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "@google/generative-ai": "^0.2.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["gemini", "ai", "webapp", "google", "chat", "image-analysis", "dark-mode"],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
